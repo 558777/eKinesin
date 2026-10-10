@@ -64,3 +64,14 @@ regex = '\b(44\.[0-9]{2,6}|104\.[0-9]{2,6})\b'
 *   **International Priority:** Filed with the **Swiss Federal Institute of Intellectual Property (IGE / IPI, Bern)** under the Unified Filing Document protocol (`Informal Priority — eKinesin MOF Project`).
 *   **State Registration:** Submitted for State Registration of Computer Programs with the Federal Service for Intellectual Property (**Rospatent**, Moscow) under the core computing engine specification.
 *   **Copyright:** © 2026 Zhamanakov Alexander Sergeevich. All rights reserved. Proprietary commercial architecture.
+*   ---
+
+## 👤 Founding Principal & Strategic Architecture
+The core mathematical invariants and macroeconomic execution matrix of the **eKinesin** platform are proprietary assets designed and directed by the Founding Principal:
+
+*   **Principal:** Zhamanakov Alexander Sergeevich
+*   **Professional Core:** International Business Consultant, Strategic Advisor, and Senior Enterprise Architect.
+*   **Expertise Horizon:** Over 30 years of cross-border experience in structuring complex B2B transactions, private equity allocations, industrial asset management, and Foreign Economic Activity (FEA / ВЭД) across Russia, the CIS, and Asian international business hubs.
+*   **Operational Focus:** Specializes in process engineering, revenue optimization models, and deploying nad-system security perimeters for high-capitalization energy and industrial infrastructure projects.
+*   **Verified Digital Identity:** Account structurally synchronized with verified Google Identity Infrastructure.
+
