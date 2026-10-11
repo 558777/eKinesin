@@ -1,9 +1,10 @@
 ## 📈 Commercial Gateway: ATOM-COMMERCE (Leak-Audit Express Matrix)
 
-**Operational Protocol Standard:** 
+**Operational Protocol Standard:** `ATOM-v1.0.0 [Commerce Layer]`  
 **Application Horizon:** Multi-Vector Margin Integrity & Supply Chain Risk Control  
 
 The Founding Principal offers senior corporate clients and cross-border trade federations a rapid, non-invasive financial verification matrix to identify hidden margin leakage within complex distribution supply chains.
+
 
 
 
