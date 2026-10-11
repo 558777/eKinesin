@@ -1,4 +1,8 @@
-## 📈 Commercial Gateway: LEAK-AUDIT Express Channel Verification
+## 📈 Commercial Gateway: ATOM-COMMERCE (Leak-Audit Express Matrix)
+
+**Operational Protocol Standard:** `ATOM-v1.0.0 [Commerce Layer]`  
+**Application Horizon:** Multi-Vector Margin Integrity & Supply Chain Risk Control  
+
 
 **Operational Protocol Standard:** `LEAK-AUDIT-v1.0.0`  
 **Application Layer:** Risk Mitigation & Distribution Channel Integrity Audit  
