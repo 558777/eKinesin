@@ -8,14 +8,14 @@
 **Target Nodes:** Institutional Sharia Boards & Regulatory Clearing Hubs  
 ### ⚙️ Runtime Data Processing Architecture
 1. **Secure Ingestion:** Aggregated metrics—Revenue (R), Direct Production Costs (D), and Cumulative Costs (F)—are accepted through isolated cryptographic gateways without exposing underlying corporate enterprise ledgers.
-2. **Dynamic Invariant Calculation:** The core engine evaluates the specific distance vector from the golden ratio cubed axis:  
-   \[\Delta = \vert{}X_{\text{actual}} - \Phi^3\vert{}\]
-3. **Fail-Secure Interception:** If the calculated value breaches the hardcoded boundary limit (\(\Delta > \delta_{\text{threshold}}\)), the network locks the state as `RED / FAIL_SECURE`. Normal operation commits a `GREEN / PASS` verdict.
+2. **Dynamic Invariant Calculation:** The core engine evaluates the specific distance vector from the golden ratio cubed axis: delta = |X_actual - PHI3|
+3. **Fail-Secure Interception:** If the calculated value breaches the hardcoded boundary limit (delta > delta_threshold), the network locks the state as RED / FAIL_SECURE. Normal operation commits a GREEN / PASS verdict.
 4. **Self-Verifying Chain Output:** Generates a deterministic 4-field SHA-256 transaction seal matrix (`tact`, `requested`, `cumulative`, `prior_seal`) pushed directly to the target clearance infrastructure.
 
 ### 📈 Verified Performance Markers
-* **Target Processing SLA:** \(t_{\text{proc}} \leq 120\) seconds per complete structural block verification.
-* **Threshold Calibration:** Boundary condition \(\delta_{\text{threshold}}\) calibrated via 3 independent asset-degradation stress test scenarios.
+* **Target Processing SLA:** t_proc <= 120 seconds per complete structural block verification.
+* **Threshold Calibration:** Boundary condition delta_threshold calibrated via 3 independent asset-degradation stress test scenarios.
+
 
 
 ## 🧪 Core Engine Verification: 10 Industrial Test Matrix
