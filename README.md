@@ -74,4 +74,25 @@ The core mathematical invariants and macroeconomic execution matrix of the **eKi
 *   **Expertise Horizon:** Over 30 years of cross-border experience in structuring complex B2B transactions, private equity allocations, industrial asset management, and Foreign Economic Activity (FEA / ВЭД) across Russia, the CIS, and Asian international business hubs.
 *   **Operational Focus:** Specializes in process engineering, revenue optimization models, and deploying nad-system security perimeters for high-capitalization energy and industrial infrastructure projects.
 *   **Verified Digital Identity:** Account structurally synchronized with verified Google Identity Infrastructure.
+*   "chain": [
+  {
+    "tact": 1,
+    "requested": "1000.000000000000",
+    "cumulative": "1000.000000000000",
+    "coord": "1.300782245361",
+    "prior_seal": "genesis",
+    "seal": "2593f5a0bf10",
+    "status": "MINTED_AND_LOCKED"
+  },
+  {
+    "tact": 2,
+    "requested": "1.000000000000",
+    "cumulative": "1000.000000000000",
+    "coord": "1.300782245361",
+    "prior_seal": "2593f5a0bf10",
+    "seal": "FAIL_SECURE_INVALID",
+    "status": "FAIL_SECURE"
+  }
+]
+
 
