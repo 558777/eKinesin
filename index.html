@@ -3,134 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAM-MATRIX | Независимый инвестиционный радар</title>
+    <title>ITO-anti-MATRIX | ИнституциональныйDiscovery-Контур</title>
     <style>
+        :root {
+            --bg-main: #0b0d11;
+            --bg-panel: #131720;
+            --bg-input: #1a1f2c;
+            --border-color: #262f41;
+            --text-primary: #e2e8f0;
+            --text-muted: #64748b;
+            --accent-cyan: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0e27;
-            color: #ffffff;
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+
+        /* Верхняя системная строка */
+        .system-bar {
+            background-color: var(--bg-panel);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            letter-spacing: 1px;
         }
-        h1 {
-            color: #ffd700;
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 10px;
+
+        .system-status {
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        h2 {
-            color: #00ffff;
-            font-size: 1.8em;
-            border-bottom: 2px solid #00ffff;
-            padding-bottom: 10px;
-            margin-top: 40px;
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
         }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+
+        /* Основной двухпанельный каркас */
+        .main-container {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 41px);
+            overflow: hidden;
         }
-        .highlight {
-            background-color: #1a1f3d;
+
+        /* Левая панель: Ввод данных и параметры */
+        .left-control-panel {
+            width: 35%;
+            background-color: var(--bg-panel);
+            border-right: 1px solid var(--border-color);
             padding: 20px;
-            border-left: 4px solid #ffd700;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        /* Правая панель: Чат-терминал вывода Аэлиты */
+        .right-output-terminal {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-main);
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 { font-size: 1.4em; color: var(--text-primary); }
+        h2 { font-size: 1.1em; color: var(--accent-cyan); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+
+        .param-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.8em;
+            color: var(--text-muted);
+        }
+
+        .status-value {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            padding: 10px;
             border-radius: 4px;
-            margin: 20px 0;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #ffd700;
-            color: #0a0e27;
-            padding: 15px 40px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2em;
-            border-radius: 8px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #e6c200;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #888;
             font-size: 0.9em;
         }
-        .footer a {
-            color: #00ffff;
-            text-decoration: none;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            background: #1a1f3d;
-            margin-bottom: 10px;
-            padding: 15px;
+
+        /* Строка ООН и демографии */
+        .un-index-row {
+            background-color: #161212;
+            border: 1px solid #3d1a1a;
+            padding: 12px;
             border-radius: 4px;
-            border-left: 3px solid #00ffff;
+            font-size: 0.85em;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Контент чата справа */
+        .terminal-messages {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .message-block {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 15px;
+            max-width: 85%;
+        }
+
+        .message-block.system {
+            border-left: 4px solid var(--accent-cyan);
+        }
+
+        .message-header {
+            font-size: 0.8em;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Нижняя панель ввода (копия ICQ/Профессионального чата) */
+        .terminal-input-area {
+            padding: 20px;
+            background-color: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .main-input {
+            flex: 1;
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: inherit;
+            resize: none;
+            height: 24px;
+        }
+
+        .main-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .action-btn {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: var(--border-color);
+            color: var(--accent-cyan);
+        }
+
+        .action-btn.primary {
+            background-color: var(--accent-cyan);
+            color: var(--bg-main);
+            border-color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .action-btn.primary:hover {
+            background-color: #0284c7;
+            color: var(--text-primary);
+        }
+
+        .file-links-row {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8em;
+        }
+
+        .file-links-row a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .file-links-row a:hover {
+            color: var(--text-primary);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ZAM-MATRIX</h1>
-        <p style="text-align: center; font-size: 1.3em; color: #00ffff;">Независимый инвестиционный радар. Сами себе консалтинг.</p>
-        
-        <div class="highlight">
-            <p>Мы не продаем геополитические сказки. Мы продаем <strong>чистые цифры и системную логику</strong>. Второе мнение для тех, кто устал верить отчетам McKinsey и МВФ.</p>
-        </div>
 
-        <h2>Проблема</h2>
-        <p>Каждый день выходят десятки отчетов: от МВФ до Всемирного банка. Их читают инвесторы и топ-менеджеры. Но кто проверяет их на логику?</p>
-        <p>Мы прогнали свежий прогноз МВФ через нашего ИИ-аудитора. Результат: <strong>НАЙДЕНЫ ПРОТИВОРЕЧИЯ</strong>. Прогноз выглядит слишком гладким, как экстраполяция пессимизма, а не реальный экономический цикл.</p>
-
-        <h2>Наше решение</h2>
-        <p><strong>ZAM-MATRIX — это ваш личный независимый аудитор.</strong></p>
-        <ul>
-            <li><strong>Мы видим то, что пропускают другие.</strong> Наш Resonance Index предсказал крахи 1929, 2008 и 2020 годов за 30 дней до них.</li>
-            <li><strong>Мы проверяем портфели легенд.</strong> Уоррен Баффет и Кэти Вуд. Если они оба покупают один актив — это сверхсигнал.</li>
-            <li><strong>Мы пишем на человеческом языке.</strong> GigaChat переводит цифры в бизнес-рекомендации.</li>
-        </ul>
-
-        <h2>Доказательство</h2>
-        <ul>
-            <li><strong>Аудит МВФ:</strong> Нашли логическую дыру в прогнозе на 6 лет.</li>
-            <li><strong>Анализ рынков:</strong> S&P 500, Золото, Биткоин — все в зоне GOLDEN (Resonance 0.65+).</li>
-            <li><strong>Прогноз на год:</strong> Коридор вероятностей для S&P 500 (от 7000 до 11000).</li>
-            <li><strong>Графики:</strong> 3 визуализации с сигналами на покупку.</li>
-        </ul>
-
-        <h2>Что вы получаете</h2>
-        <p><strong>Утренний Брифинг (Daily Snapshot)</strong></p>
-        <ul>
-            <li><strong>Макро-фон:</strong> Где сейчас рынок (S&P 500, Золото, BTC).</li>
-            <li><strong>Расхождения (Divergence):</strong> Где официальный рынок и крипта разошлись.</li>
-            <li><strong>Прогноз МВФ:</strong> Что говорят они, и где мы с ними не согласны.</li>
-            <li><strong>Вердикт Аэлиты:</strong> Рекомендация на день.</li>
-        </ul>
-
-        <div style="text-align: center; margin-top: 40px;">
-            <h2>Хотите бесплатный аудит?</h2>
-            <p>Напишите нам в Telegram или оставьте заявку. Мы пришлем отчет на 1 страницу.</p>
-            <p>👉 <strong>Telegram:</strong> <a href="https://t.me/mcmrus" style="color: #00ffff;">@mcmrus</a> (Александр Серикович)</p>
-            <p>👉 <strong>Email:</strong> research@ito-architecture.ru</p>
-            <br>
-            <p><strong>Или оплатите пилотный доступ прямо сейчас:</strong></p>
-            <a href="https://t.tb.ru/pm_short/4ZMfgdmkLJ1" class="btn">💳 Оплатить пилотный доступ</a>
-        </div>
-
-        <div class="footer">
-            <p>© 2026 ZAM-MATRIX. Независимый консалтинг. <br> Метод запатентован (заявка в Роспатенте).</p>
+    <!-- Верхняя системная строка -->
+    <div class="system-bar">
+        <div>CORE://ITO-ANTI-MATRIX/ROUTER_v2.080</div>
+        <div class="system-status">
+            <div class="status-dot"></div>
+            <span>КОНТУР АЭЛИТЫ АКТИВЕН [СЕРВЕР 2 // SILICONFLOW]</span>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- Основной рабочий блок -->
+    <div class="main-container">
+        
+        <!-- ЛЕВАЯ ПАНЕЛЬ: Управление и Ввод параметров -->
+        <div class="left-control-panel">
+            <h1>ITO-anti-MATRIX</h1>
+            <p style="color: var(--text-muted); font-size: 0.85em; margin: 0;">Институциональный сквозной радар независимого аудита.</p>
+            
+            <h2>Аналитические маркеры</h2>
+            
+            <div class="param-group">
+                <label>Аудит-статус МВФ (WEO):</label>
+                <div class="status-value" style="color: var(--accent-red);">КРИТИЧЕСКОЕ РАСХОЖДЕНИЕ // НАЙДЕНЫ ПРОТИВОРЕЧИЯ</div>
+            </div>
+
+            <div class="param-group">
+                <label>Сверхсигнал (Баффет vs Кэти Вуд):</label>
+                <div class="status-value">ПЕРЕСЕЧЕНИЕ КОНТУРОВ: ОЖИДАНИЕ JSON_DATA</div>
+            </div>
+
+            <div class="param-group">
+                <label>Текущий макро-резонанс (Resonance Index):</label>
+                <div class="status-value" style="color: var(--accent-green);">0.65+ ZONE GOLDEN [СТАБИЛЬНО]</div>
+            </div>
+
+            <h2>Четвертая строка: Индекс ООН и Демография</h2>
+            <div class="un-index-row">
+                <div>• Текущее население Земли: <span style="color: var(--accent-cyan);">8,185,430,200</span></div>
+                <div>• Рождений в этом году: <span style="color: var(--accent-green);">112,450,100</span></div>
+                <div>• Смертей в этом году: <span style="color: var(--accent-red);">48,920,400</span></div>
+            </div>
+            
+            <div style="margin-top: auto; font-size: 0.75em; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 15px;">
+                © 2026 ITO-anti-MATRIX. Метод запатентован. <br>
+                Заявки в Роспатент №2026161207, №2026161225.
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ ПАНЕЛЬ: Чат-интерфейс Аэлиты -->
+        <div class="right-output-terminal">
+            
+            <div class="terminal-messages">
+                
+                <!-- Приветственное системное сообщение -->
+                <div class="message-block system">
+                    <div class="message-header">
+                        <span>СИСТЕМА // ИНИЦИАЛИЗАЦИЯ</span>
+                        <span>28.10.2026</span>
+                    </div>
+                    <p style="margin: 0; font-size: 0.9em;">Добро пожаловать в рабочее пространство ITO-anti-MATRIX. Мы не оперируем геополитическими сказками и чужими мнениями. Вся аналитика базируется исключительно на чистых цифрах и системной логике жесткого прагматизма.</p>
+                </div>
+
+                <!-- Блок ответа Аэлиты -->
+                <div class="message-block system">
+                    <div class="message-header">
+                        <span>СОВЕТНИК АЭЛИТА</span>
+                        <span>СЕГОДНЯШНИЙ ВЕРДИКТ</span>
+                    </div>
+
